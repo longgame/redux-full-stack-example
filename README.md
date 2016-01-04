@@ -14,6 +14,14 @@ $ npm install
 
 ```bash
 $ gulp build
+$ gulp db:migrate
+$ gulp db:seed
+```
+
+*Run the test suite*
+
+```bash
+$ gulp test
 ```
 
 *Start the server*
@@ -65,5 +73,3 @@ File-system database for development and testing.
 TDD and BDD assetion library.
 * [Mocha](https://mochajs.org/)
 Test framework for Node.js.
-* [Umzug](https://github.com/sequelize/umzug)
-Manage sequelize programatically.

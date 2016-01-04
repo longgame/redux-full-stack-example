@@ -1,5 +1,8 @@
 'use strict;'
 
+// app is already global, but this makes things clearer
+global.app = require('../app');
+
 var fs = require('fs'),
     path = require('path'),
     gulp = require('gulp');
