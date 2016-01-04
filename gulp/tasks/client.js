@@ -8,7 +8,7 @@ gulp.task('client:serve', false,  function() {
   runSequence(['webpack:devserver']);
 });
 
-gulp.task('client', 'Serve live-reloading client on port 9000.',  function() {
+gulp.task('client', 'Serve client on port 9000.',  function() {
   runSequence(['client:serve']);
 }, {
   aliases: [ 'dev' ]
