@@ -1,11 +1,11 @@
 'use strict;'
 
-// app is already global, but this makes things clearer
+global._ = require('lodash');
+global.fs = require('fs');
+global.path = require('path');
+global.gulp = require('gulp');
+global.sequence = require('run-sequence');
 global.app = require('../app');
-
-var fs = require('fs'),
-    path = require('path'),
-    gulp = require('gulp');
 
 fs.readdirSync( path.join(__dirname, 'tasks') )
   .filter( function(file) { return /\.jsx?$/.test(file); } )

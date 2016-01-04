@@ -1,8 +1,6 @@
 'use strict;'
 
-var path = require('path'),
-    gulp = require('gulp'),
-    webpack = require('webpack'),
+var webpack = require('webpack'),
     devServer = require('webpack-dev-server');
 
 var webpackConfig = require('../../webpack.config.js');

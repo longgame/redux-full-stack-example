@@ -1,9 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-var path = require('path');
-var gulp = require('gulp');
-var runSequence = require('run-sequence');
 var Umzug = require('Umzug');
 
 var migrate = new Umzug({
@@ -71,13 +67,13 @@ gulp.task('db:seed:undo:all', function() {
 });
 
 gulp.task('db:flush:seed', function() {
-  runSequence(['db:seed:undo:all']);
+  sequence(['db:seed:undo:all']);
 });
 
 gulp.task('db:flush:migrate', function() {
-  runSequence(['db:migrate:undo:all']);
+  sequence(['db:migrate:undo:all']);
 });
 
 gulp.task('db:flush', function() {
-  runSequence(['db:flush:seed', 'db:flush:migrate']);
+  sequence(['db:flush:seed', 'db:flush:migrate']);
 });
