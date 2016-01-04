@@ -3,7 +3,7 @@
 global._ = require('lodash');
 global.fs = require('fs');
 global.path = require('path');
-global.gulp = require('gulp');
+global.gulp = require('gulp-help')(require('gulp'));
 global.sequence = require('run-sequence');
 global.app = require('../app');
 
@@ -13,6 +13,6 @@ fs.readdirSync( path.join(__dirname, 'tasks') )
     require(path.join(__dirname, 'tasks', task));
   });
 
-gulp.task('default', function() {
-  // FIXME
+gulp.task('default', false, function() {
+  sequence( ['help'] );
 });

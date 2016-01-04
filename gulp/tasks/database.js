@@ -26,7 +26,15 @@ var seeder = new Umzug({
   }
 });
 
-gulp.task('db:migrate', function() {
+gulp.task('db:help', 'List database commands.', function() {
+  // FIXME
+});
+
+gulp.task('db', false, function() {
+  sequence(['db:help']);
+});
+
+gulp.task('db:migrate', false, function() {
   migrate.pending().then(function(migrations) {
     _.forEach(migrations, function(migration) {
       migrate.up(migration);
@@ -34,11 +42,11 @@ gulp.task('db:migrate', function() {
   });
 });
 
-gulp.task('db:migrate:undo', function() {
+gulp.task('db:migrate:undo', false, function() {
   migrate.down();
 });
 
-gulp.task('db:migrate:undo:all', function() {
+gulp.task('db:migrate:flush', false, function() {
   migrate.executed().then(function(migrations) {
     _.forEachRight(migrations, function(migration) {
       migrate.down(migration);
@@ -46,7 +54,7 @@ gulp.task('db:migrate:undo:all', function() {
   });
 });
 
-gulp.task('db:seed', function() {
+gulp.task('db:seed', false, function() {
   seeder.pending().then(function(seeds) {
     _.forEach(seeds, function(seed) {
       seeder.up(seed);
@@ -54,11 +62,11 @@ gulp.task('db:seed', function() {
   });
 });
 
-gulp.task('db:seed:undo', function() {
+gulp.task('db:seed:undo', false, function() {
   seeder.down();
 });
 
-gulp.task('db:seed:undo:all', function() {
+gulp.task('db:seed:flush', false, function() {
   seeder.pending().then(function(seeds) {
     _.forEachRight(seeds, function(seed) {
       seeder.down(seed);
@@ -66,14 +74,6 @@ gulp.task('db:seed:undo:all', function() {
   });
 });
 
-gulp.task('db:flush:seed', function() {
-  sequence(['db:seed:undo:all']);
-});
-
-gulp.task('db:flush:migrate', function() {
-  sequence(['db:migrate:undo:all']);
-});
-
-gulp.task('db:flush', function() {
+gulp.task('db:flush', false, function() {
   sequence(['db:flush:seed', 'db:flush:migrate']);
 });

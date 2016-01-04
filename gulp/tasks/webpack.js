@@ -5,7 +5,7 @@ var webpack = require('webpack'),
 
 var webpackConfig = require('../../webpack.config.js');
 
-gulp.task('webpack', function(cb) {
+gulp.task('webpack', false, function(cb) {
   webpack(webpackConfig, function(err, data) {
     if (err) throw new Error(err.message);
     // FIXME: Do something with data
@@ -13,7 +13,7 @@ gulp.task('webpack', function(cb) {
   });
 });
 
-gulp.task('webpack:devserver', function() {
+gulp.task('webpack:devserver', false, function() {
   webpackConfig.entry.app.unshift(
     "webpack-dev-server/client?http://localhost:9000",
     "webpack/hot/dev-server"

@@ -1,5 +1,5 @@
 'use strict;'
 
-gulp.task('build', function() {
-  sequence(['webpack']);
+gulp.task('build', 'Build assets for server.', function() {
+  sequence(['client:build']);
 });
