@@ -1,12 +1,17 @@
 'use strict';
 
+var path = require('path');
 var gulp = require('gulp');
-var server = require('gulp-express');
+var nodemon = require('gulp-nodemon');
 var runSequence = require('run-sequence');
 
 gulp.task('server', function() {
-  server.run(['./server.js']);
-  gulp.watch(['app.js', 'src/**/*', 'config/**/*'], server.notify);
+  nodemon({
+    script: path.join(app.get('root'), 'server.js'),
+    ext: 'js html ejs jade',
+    watch: ['server.js', 'app.js', 'src/**/*', 'config/**/*'],
+    env: { NODE_ENV: 'development' }
+  });
 });
 
 gulp.task('serve', function() {
