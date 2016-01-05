@@ -2,24 +2,46 @@
 
 var path = require('path');
 var express = require('express');
+var logger = require('morgan');
+var bodyParser = require('body-parser');
+var flash = require('express-flash');
+var session = require('express-session');
 
 var config = require('./config/config');
 
-global.app = express();
+global.app = module.exports = express();
 
-app.use(express.static('dist'));
-app.use(express.static('public'));
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'top-secret',
+  resave: false,
+  saveUninitialized: false,
+}));
 
 app.set('root', __dirname);
-
+app.set('config', config);
+app.set('view engine', 'jade');
+app.set('views', './src/views');
 app.set('models', require('./src/models'));
 app.set('controllers', require('./src/controllers'));
-app.set('views', './src/views');
-app.set('view engine', 'jade');
-
 app.set('database', app.get('models').sequelize);
 
-var router = require('./config/routes');
-app.use('/', router);
+app.use(flash());
 
-module.exports = app;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+switch(config.env) {
+  case('development'):
+    app.use(logger('dev'));
+    break;
+  case('test'):
+  case('production'):
+    app.use(logger('combined'));
+    break;
+}
+
+app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/public'));
+
+var router = require('./src/routes');
+app.use('/', router);
