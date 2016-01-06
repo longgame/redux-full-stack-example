@@ -1,10 +1,9 @@
 'use strict';
 
-var config = require('./config/config');
 var app = require('./app');
 
-app.listen(3000, function() {
+app.listen(3000, (err) => {
   console.log('Listening on http://%s:%s',
-                config.host,
-                config.port);
+                app.get('config').host,
+                app.get('config').port);
 });

@@ -1,9 +1,16 @@
 'use strict';
 
-exports.profile = function(req, res) {
-  res.json({ response: 'PROFILE' });
+exports.show = (req, res) => {
+  var out = {
+    authenticated: req.isAuthenticated(),
+  };
+  res.json(out);
 };
 
-exports.updateProfile = function(req, res) {
-  res.json({ response: 'UPDATE PROFILE' });
+exports.profile = (req, res) => {
+  res.json('OK');
+};
+
+exports.updateProfile = (req, res) => {
+  res.json('OK');
 };

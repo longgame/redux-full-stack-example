@@ -48,7 +48,7 @@ gulp.task('db:migrate:undo', false, function() {
 
 gulp.task('db:migrate:flush', false, function() {
   migrate.executed().then(function(migrations) {
-    _.forEachRight(migrations, function(migration) {
+    _.first(migrations, function(migration) {
       migrate.down(migration);
     });
   });
@@ -75,5 +75,5 @@ gulp.task('db:seed:flush', false, function() {
 });
 
 gulp.task('db:flush', false, function() {
-  sequence(['db:flush:seed', 'db:flush:migrate']);
+  sequence(['db:seed:flush', 'db:migrate:flush']);
 });

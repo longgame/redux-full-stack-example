@@ -5,7 +5,6 @@ require('harmonize')();
 global._ = require('lodash');
 global.fs = require('fs');
 global.path = require('path');
-global.co = require('co');
 global.gulp = require('gulp-help')(require('gulp'));
 global.sequence = require('run-sequence');
 global.app = require('../app');

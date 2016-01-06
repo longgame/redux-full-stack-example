@@ -32,9 +32,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 switch(config.env) {
   case('development'):
+  case('test'):
     app.use(logger('dev'));
     break;
-  case('test'):
   case('production'):
     app.use(logger('combined'));
     break;

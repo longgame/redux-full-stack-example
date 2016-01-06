@@ -5,23 +5,23 @@ var co = require('co');
 
 var models = app.get('models');
 
-exports.create = function (req, res) {
+exports.create = (req, res) => {
   res.json({ response: 'CREATE' });
 };
 
-exports.show = function (req, res) {
+exports.show = (req, res) => {
   res.json({ response: 'SHOW' });
 };
 
-exports.list = function (req, res) {
+exports.list = (req, res) => {
   co(function *() {
     var Users = yield models.User.findAll();
-    res.json(_.map(Users, function (User) {
+    res.json(_.map(Users, (User) => {
       return User.summary();
     }));
   });
 };
 
-exports.update = function (req, res) {
+exports.update = (req, res) => {
   res.json({ response: 'UPDATE' });
 };
