@@ -6,24 +6,23 @@ var co = require('co');
 var User = app.get('models').User;
 
 exports.create = (req, res) => {
-  res.json({ response: 'CREATE' });
+  res.sendStatus(404);
 };
 
 exports.show = (req, res) => {
-  res.json({ response: 'SHOW' });
+  res.sendStatus(404);
 };
 
 exports.list = (req, res) => {
   co(function *(cb) {
     var Users = yield User.findAll();
-    cb(_.map(Users, (User) => {
-      return User.summary();
+    
+    res.json(_.map(Users, (user) => {
+      return user.summary;
     }));
-  })((data) => {
-    res.json(data);
-  });
+  })();
 };
 
 exports.update = (req, res) => {
-  res.json({ response: 'UPDATE' });
+  res.sendStatus(404);
 };

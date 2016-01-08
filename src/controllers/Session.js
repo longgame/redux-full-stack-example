@@ -14,7 +14,7 @@ exports.profile = (req, res) => {
   if (req.isAuthenticated()) {
     res.json(req.user.profile);
   } else {
-    res.sendStatus(404);
+    res.sendStatus(403);
   }
 };
 
@@ -32,6 +32,6 @@ exports.update = (req, res) => {
       res.json(req.user.profile);
     })();
   } else {
-    res.sendStatus(404);
+    res.sendStatus(403);
   }
 };
