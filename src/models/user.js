@@ -1,6 +1,10 @@
 'use strict';
 
 var _ = require('lodash');
+var path = require('path');
+var crypto = require(
+  path.join(app.get('root'), 'lib/crypto')
+);
 
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
@@ -13,6 +17,11 @@ module.exports = function(sequelize, DataTypes) {
     last_name:                  DataTypes.STRING,
     phone_number:               DataTypes.STRING,
   }, {
+    setterMethods: {
+      password: function(pass) {
+        this.setDataValue('password', crypto.hash(pass));
+      },
+    },
     classMethods: {
       associate: function(models) {
         // associations can be defined here
@@ -35,6 +44,9 @@ module.exports = function(sequelize, DataTypes) {
           'avatar_url',
           'phone_number',
         ]);
+      },
+      checkPassword: function(pass) {
+        return crypto.compare(pass, this.password);
       },
       verifyEmail: function() {
         this.email_confirmation_sent = new Date();

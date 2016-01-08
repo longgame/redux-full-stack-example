@@ -25,6 +25,10 @@ app.set('models', require('./src/models'));
 app.set('controllers', require('./src/controllers'));
 app.set('database', app.get('models').sequelize);
 
+var passport = require('./lib/passport');
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(flash());
 
 app.use(bodyParser.json());

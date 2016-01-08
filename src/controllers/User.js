@@ -3,7 +3,7 @@
 var _ = require('lodash');
 var co = require('co');
 
-var models = app.get('models');
+var User = app.get('models').User;
 
 exports.create = (req, res) => {
   res.json({ response: 'CREATE' });
@@ -14,11 +14,13 @@ exports.show = (req, res) => {
 };
 
 exports.list = (req, res) => {
-  co(function *() {
-    var Users = yield models.User.findAll();
-    res.json(_.map(Users, (User) => {
+  co(function *(cb) {
+    var Users = yield User.findAll();
+    cb(_.map(Users, (User) => {
       return User.summary();
     }));
+  })((data) => {
+    res.json(data);
   });
 };
 

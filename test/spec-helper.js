@@ -1,24 +1,55 @@
 'use strict';
 
 global._ = require('lodash');
-global.assert = require('chai').assert;
-global.expect = require('chai').expect;
-global.should = require('chai').should();
-global.request = require('supertest');
+global.util = require('util');
+global.async = require('async');
+global.fs = require('fs');
+global.path = require('path');
+global.mutex = require('locks').createMutex();
 global.uuid = require('node-uuid');
-global.nock = require('nock');
 
-require('mocha');
+var chai = require('chai');
+global.assert = chai.assert;
+global.expect = chai.expect;
+global.should = chai.should();
+
+global.co = require('co');
+global.sleep = require('co-sleep');
 
 global.app = require('../app');
-request = request(app);
+global.request = require('co-supertest').agent(app.listen());
+global.nock = require('nock');
 
-/*
-before() {
-  console.log("RZA Begin!");
-};
+require('co-mocha');
 
-after() {
-  console.log("JZA Done!");
-};
-*/
+var dbHelper = require('./spec-helpers/Database');
+exports.database = dbHelper;
+exports.db = dbHelper;
+
+var userHelper = require('./spec-helpers/User');
+exports.user = userHelper;
+
+var sessionHelper = require('./spec-helpers/Session');
+exports.session = sessionHelper;
+
+var tsSuite, tsTest;
+
+before(function *() {
+  console.log("--- Begin Test Suite ---");
+  tsSuite = Date.now();
+});
+
+beforeEach(function *() {
+  yield dbHelper.flush();
+  tsTest = Date.now();
+});
+
+afterEach(function *() {
+  console.log("--- Finished Unit Test (%s) ---", Date.now()-tsTest);
+  if (yield sessionHelper.authenticated())
+    yield userHelper.logout();
+});
+
+after(function *() {
+  console.log("--- End Test Suite (%s) ---", Date.now()-tsSuite);
+});

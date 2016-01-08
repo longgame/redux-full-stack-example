@@ -2,7 +2,7 @@
 
 var Umzug = require('Umzug');
 
-var migrate = new Umzug({
+var Migrate = new Umzug({
   storage: 'sequelize',
   storageOptions: {
     sequelize: app.get('database')
@@ -14,7 +14,7 @@ var migrate = new Umzug({
   }
 });
 
-var seeder = new Umzug({
+var Seed = new Umzug({
   storage: 'sequelize',
   storageOptions: {
     sequelize: app.get('database')
@@ -35,41 +35,41 @@ gulp.task('db', false, function() {
 });
 
 gulp.task('db:migrate', false, function() {
-  migrate.pending().then(function(migrations) {
+  Migrate.pending().then(function(migrations) {
     _.forEach(migrations, function(migration) {
-      migrate.up(migration);
+      Migrate.up(migration);
     });
   });
 });
 
 gulp.task('db:migrate:undo', false, function() {
-  migrate.down();
+  Migrate.down();
 });
 
 gulp.task('db:migrate:flush', false, function() {
-  migrate.executed().then(function(migrations) {
+  Migrate.executed().then(function(migrations) {
     _.first(migrations, function(migration) {
-      migrate.down(migration);
+      Migrate.down(migration);
     });
   });
 });
 
 gulp.task('db:seed', false, function() {
-  seeder.pending().then(function(seeds) {
+  Seed.pending().then(function(seeds) {
     _.forEach(seeds, function(seed) {
-      seeder.up(seed);
+      Seed.up(seed);
     });
   });
 });
 
 gulp.task('db:seed:undo', false, function() {
-  seeder.down();
+  Seed.down();
 });
 
 gulp.task('db:seed:flush', false, function() {
-  seeder.pending().then(function(seeds) {
+  Seed.executed().then(function(seeds) {
     _.forEachRight(seeds, function(seed) {
-      seeder.down(seed);
+      Seed.down(seed);
     });
   });
 });

@@ -13,12 +13,14 @@ router.get('/ping', (req, res) => {
 
 var controllers = app.get('controllers');
 
-router.post('/login', controllers.Auth.login);
 router.post('/register', controllers.Auth.register);
+router.post('/login', controllers.Auth.login);
+router.post('/logout', controllers.Auth.logout);
 
 router.all('/session', controllers.Session.show);
 router.get('/profile', controllers.Session.profile);
-router.post('/profile', controllers.Session.updateProfile);
+router.post('/profile', controllers.Session.update);
 
-router.get('/users', controllers.User.list);
-router.get('/user/:id', controllers.User.show);
+router.get('/admin/users', controllers.User.list);
+router.get('/admin/user/:id', controllers.User.show);
+router.post('/admin/user/:id', controllers.User.update);
