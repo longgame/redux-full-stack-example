@@ -26,8 +26,8 @@ describe('Register', function() {
       "message": "Email already registered"
     });
 
+    // FIXME: WTF???
     //assert.isFalse(yield helpers.session.authenticated());
-    // FIXME: WTF??
   });
 
   it ('Throws 400 for missing credentials', function *() {

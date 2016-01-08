@@ -4,19 +4,26 @@ var User = app.get('models').User;
 
 global.test_user = {
   email: 'test@example.com',
-  password: 'Test123!'
+  password: 'Test123!',
+  first_name: 'Test',
+  last_name: 'User',
+  phone_number: '+12813308004',
+  avatar_url: 'http://example.com/icon.png',
 };
 
 global.test_admin = {
   email: 'admin@example.com',
-  password: 'Test123!'
+  password: 'Test123!',
 };
 
 exports.seed = function *(user) {
-  return yield User.create({
-    email: user.email,
-    password: user.password
-  });
+  return yield User.create(user);
+};
+
+exports.register = function *(user) {
+  return yield User.create(
+    _.pick(user, [ 'email', 'password' ])
+  );
 };
 
 exports.get = function *(email) {

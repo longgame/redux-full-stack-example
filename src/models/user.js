@@ -17,17 +17,7 @@ module.exports = function(sequelize, DataTypes) {
     last_name:                  DataTypes.STRING,
     phone_number:               DataTypes.STRING,
   }, {
-    setterMethods: {
-      password: function(pass) {
-        this.setDataValue('password', crypto.hash(pass));
-      },
-    },
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      },
-    },
-    instanceMethods: {
+    getterMethods: {
       summary: function() {
         return _.pick(this, [
           'first_name',
@@ -45,6 +35,18 @@ module.exports = function(sequelize, DataTypes) {
           'phone_number',
         ]);
       },
+    },
+    setterMethods: {
+      password: function(pass) {
+        this.setDataValue('password', crypto.hash(pass));
+      },
+    },
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+      },
+    },
+    instanceMethods: {
       checkPassword: function(pass) {
         return crypto.compare(pass, this.password);
       },
