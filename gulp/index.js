@@ -6,6 +6,7 @@ global._ = require('lodash');
 global.fs = require('fs');
 global.path = require('path');
 global.gulp = require('gulp-help')(require('gulp'));
+global.shell=require('gulp-shell');
 global.sequence = require('run-sequence');
 global.app = require('../app');
 

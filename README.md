@@ -21,8 +21,7 @@ $ gulp db:seed
 *Run the test suite*
 
 ```bash
-$ NODE_ENV=test gulp db:migrate
-$ NODE_ENV=test gulp test
+$ gulp test
 ```
 
 *Start the server*

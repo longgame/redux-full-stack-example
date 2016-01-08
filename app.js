@@ -2,10 +2,11 @@
 
 var path = require('path');
 var express = require('express');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
 var flash = require('express-flash');
 var session = require('express-session');
+var logger = require('morgan');
+var bodyParser = require('body-parser');
+var Redis = require('redis');
 
 var config = require('./config/config');
 
@@ -24,6 +25,7 @@ app.set('views', './src/views');
 app.set('models', require('./src/models'));
 app.set('controllers', require('./src/controllers'));
 app.set('database', app.get('models').sequelize);
+app.set('kue', require('./src/jobs'));
 
 var passport = require('./lib/passport');
 app.use(passport.initialize());
