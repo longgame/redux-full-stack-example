@@ -1,0 +1,11 @@
+#todo-item {
+  .active {
+    textDecoration: 'none';
+    cursor: 'pointer';
+  }
+
+  .completed {
+    textDecoration: 'line-through';
+    cursor: 'default';
+  }
+}

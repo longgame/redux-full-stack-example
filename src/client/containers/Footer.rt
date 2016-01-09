@@ -1,0 +1,17 @@
+<div id='footer' class='ui center aligned container'>
+  <div class='ui divider'>
+  <div class='ui grid'>
+    <div class='four wide brand column'>
+      Logo
+    </div>
+    <div class='four wide column'>
+      Company
+    </div>
+    <div class='four wide column'>
+      Developers
+    </div>
+    <div class='four wide column'>
+      Contact
+    </div>
+  </div>
+</div>

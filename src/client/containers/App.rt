@@ -6,7 +6,7 @@
 <rt-require dependency='../components/TodoList' as='TodoList' />
 <rt-require dependency='../actions/TodoList' as='TodoActions' />
 
-<div id='app'>
+<div id='app' class='ui container'>
   <Hello />
   <br />
   <Counter

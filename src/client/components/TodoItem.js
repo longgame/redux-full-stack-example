@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+import styles from './TodoItem.scss';
+
 module.exports = React.createClass({
   propTypes: {
     todos: PropTypes.shape({
@@ -13,6 +15,7 @@ module.exports = React.createClass({
     const item = this.props.todo;
     return (
       <div
+        id='todo-item'
         onClick={ this.props.onClick }
         style={{
           textDecoration: item.completed ? 'line-through' : 'none',

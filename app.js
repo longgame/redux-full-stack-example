@@ -25,7 +25,7 @@ app.set('views', './src/views');
 app.set('models', require('./src/models'));
 app.set('controllers', require('./src/controllers'));
 app.set('database', app.get('models').sequelize);
-app.set('kue', require('./src/jobs'));
+app.set('kue', require('./lib/kue'));
 
 var passport = require('./lib/passport');
 app.use(passport.initialize());

@@ -1,0 +1,11 @@
+<div id='navbar' class='ui container'>
+  <div class='ui inverted menu navbar'>
+    <a href='#' class='brand item'>Redux FS</a>
+    <a href='#' class='item'>Lobby</a>
+    <a href='#' class='item'>About</a>
+
+    <div class='right menu'>
+      <div class='item'>Login</div>
+    </div>
+  </div>
+</div>

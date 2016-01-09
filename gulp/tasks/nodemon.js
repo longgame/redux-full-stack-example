@@ -7,6 +7,7 @@ gulp.task('nodemon', false, function() {
     script: path.join(app.get('root'), 'server.js'),
     ext: 'js json html ejs jade',
     watch: ['server.js', 'app.js', 'src/**/*', 'config/**/*'],
+    ignore: ['src/client/**/*'],
     nodeArgs: ['--harmony'],
     env: { NODE_ENV: 'development' },
   });
