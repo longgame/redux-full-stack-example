@@ -1,0 +1,24 @@
+<rt-require dependency='./AddTodo' as='AddTodo' />
+<rt-require dependency='./TodoItem' as='Todo' />
+<rt-require dependency='./TodoFooter' as='Footer' />
+
+<div id='todo-list'>
+  <AddTodo
+    onSubmit="{ (text) => this.props.onAddTodo(text) }"
+  />
+  <ul>
+    <li
+      rt-repeat="item in this.props.todos"
+      key="{ item.id }"
+    >
+      <Todo
+        todo="{ item }"
+        onClick="{ () => this.props.onClickTodo(item.id) }"
+      />
+    </li>
+  </ul>
+  <Footer
+    filter="{ this.props.filter }"
+    onChangeFilter="{ this.props.onChangeFilter }"
+  />
+</div>

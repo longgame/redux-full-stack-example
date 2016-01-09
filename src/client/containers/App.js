@@ -6,12 +6,14 @@ import { TodoFilters } from '../actions/TodoList';
 
 import template from './App.rt';
 
-class App extends Component {
-  render() {
+var App = React.createClass({
+  dispatch: function(action) {
+    this.props.dispatch(action)
+  },
+  render: function() {
     return template.apply(this);
   }
-  dispatch(action) { this.props.dispatch(action) }
-};
+});
 
 function selectTodos(todos, filter) {
   switch (filter) {
