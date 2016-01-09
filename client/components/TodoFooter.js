@@ -1,7 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class Footer extends Component {
-  renderFilter(filter, name) {
+module.exports = React.createClass({
+  propTypes: {
+    onChangeFilter: PropTypes.func.isRequired,
+    filter: PropTypes.oneOf([
+      'SHOW_ALL',
+      'SHOW_COMPLETED',
+      'SHOW_ACTIVE',
+    ]).isRequired,
+  },
+  renderFilter: function(filter, name) {
     if (filter === this.props.filter) {
       return name;
     } else {
@@ -14,9 +22,8 @@ export default class Footer extends Component {
         </a>
       );
     }
-  }
-
-  render() {
+  },
+  render: function() {
     return (
       <p>
         Show:
@@ -30,13 +37,4 @@ export default class Footer extends Component {
       </p>
     );
   }
-};
-
-Footer.propTypes = {
-  onChangeFilter: PropTypes.func.isRequired,
-  filter: PropTypes.oneOf([
-    'SHOW_ALL',
-    'SHOW_COMPLETED',
-    'SHOW_ACTIVE',
-  ]).isRequired,
-};
+});

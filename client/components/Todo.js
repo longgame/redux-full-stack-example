@@ -1,7 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class Todo extends Component {
-  render() {
+module.exports = React.createClass({
+  propTypes: {
+    onClick: PropTypes.func.isRequired,
+    text: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  },
+  render: function() {
     return (
       <li
         onClick={ this.props.onClick }
@@ -14,10 +19,4 @@ export default class Todo extends Component {
       </li>
     );
   }
-};
-
-Todo.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
-  completed: PropTypes.bool.isRequired,
-};
+});

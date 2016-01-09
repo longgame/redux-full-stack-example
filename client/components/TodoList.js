@@ -4,8 +4,22 @@ import Todo from './Todo';
 import AddTodo from './AddTodo';
 import Footer from './TodoFooter';
 
-export default class TodoList extends Component {
-  render() {
+module.exports = React.createClass({
+  propTypes: {
+    todos: PropTypes.arrayOf({
+      text: PropTypes.string.isRequired,
+      completed: PropTypes.bool.isRequired,
+    }).isRequired,
+    filter: PropTypes.oneOf([
+      'SHOW_ALL',
+      'SHOW_COMPLETED',
+      'SHOW_ACTIVE',
+    ]).isRequired,
+    onAddTodo: PropTypes.func.isRequired,
+    onClickTodo: PropTypes.func.isRequired,
+    onChangeFilter: PropTypes.func.isRequired,
+  },
+  render: function() {
     return (
       <div id='todo-list'>
         <AddTodo
@@ -30,19 +44,4 @@ export default class TodoList extends Component {
       </div>
     );
   }
-};
-
-TodoList.propTypes = {
-  todos: PropTypes.arrayOf({
-    text: PropTypes.string.isRequired,
-    completed: PropTypes.bool.isRequired,
-  }).isRequired,
-  filter: PropTypes.oneOf([
-    'SHOW_ALL',
-    'SHOW_COMPLETED',
-    'SHOW_ACTIVE',
-  ]).isRequired,
-  onAddTodo: PropTypes.func.isRequired,
-  onClickTodo: PropTypes.func.isRequired,
-  onChangeFilter: PropTypes.func.isRequired,
-};
+});

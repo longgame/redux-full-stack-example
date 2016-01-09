@@ -1,7 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class Counter extends Component {
-  render() {
+module.exports = React.createClass({
+  propTypes: {
+    increment: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired,
+    count: PropTypes.number.isRequired,
+  },
+  render: function() {
     return (
       <div id='counter'>
         <button
@@ -18,10 +23,4 @@ export default class Counter extends Component {
       </div>
     );
   }
-};
-
-Counter.propTypes = {
-  increment: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired,
-  count: PropTypes.number.isRequired,
-};
+});
