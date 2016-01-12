@@ -1,11 +1,37 @@
-<div id='navbar' class='ui container'>
-  <div class='ui inverted menu navbar'>
-    <a href='#' class='brand item'>Redux FS</a>
+<rt-require dependency='../components/StateCounter' as='Counter' />
+
+<rt-require dependency='../components/LoginWidget' as='LoginWidget' />
+<rt-require dependency='../components/RegisterWidget' as='RegisterWidget' />
+
+<rt-require dependency='../actions/Dimmer' as='DimmerActions' />
+
+<div
+  id='navbar'
+  class='ui container'
+  rt-scope='this.props.dispatch as dispatch'
+>
+  <div class='ui inverted menu'>
+    <a href='#' class='brand item'>
+      <img class='ui mini image' src='brand.png'>
+    </a>
     <a href='#' class='item'>Lobby</a>
     <a href='#' class='item'>About</a>
 
     <div class='right menu'>
-      <div class='item'>Login</div>
+      <div class='item'>
+        <LoginWidget
+          isEnabled='{ this.props.dimmerVisible }'
+          onOpen='{ () => dispatch(DimmerActions.show()) }'
+          onClose='{ () => dispatch(DimmerActions.hide()) }'
+        />
+      </div>
+      <div class='item'>
+        <RegisterWidget
+          isEnabled='{ this.props.dimmerVisible }'
+          onOpen='{ () => dispatch(DimmerActions.show()) }'
+          onClose='{ () => dispatch(DimmerActions.hide()) }'
+        />
+      </div>
     </div>
   </div>
 </div>

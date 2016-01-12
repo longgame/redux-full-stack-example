@@ -2,13 +2,18 @@ import _ from 'underscore';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { TodoFilters } from '../actions/TodoList';
+import * as TodoActions from '../actions/TodoList';
+const TodoFilters = TodoActions.TodoFilters;
 
 import template from './App.rt';
 
 var App = React.createClass({
-  dispatch: function(action) {
-    this.props.dispatch(action)
+  propTypes: {
+    dispatch: PropTypes.func.isRequired,
+  },
+  getInitialState: function() {
+    this.props.dispatch(TodoActions.addTodo('Build a sick webapp!'));
+    return {};
   },
   render: function() {
     return template.apply(this);

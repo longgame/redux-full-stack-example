@@ -1,25 +1,30 @@
 <rt-require dependency='../components/Hello' as='Hello' />
 
-<rt-require dependency='../components/Counter' as='Counter' />
+<rt-require dependency='../components/ReduxCounter' as='Counter' />
 <rt-require dependency='../actions/Counter' as='CounterActions' />
 
 <rt-require dependency='../components/TodoList' as='TodoList' />
 <rt-require dependency='../actions/TodoList' as='TodoActions' />
 
-<div id='app' class='ui container'>
-  <Hello />
-  <br />
-  <Counter
-    increment="{ () => this.dispatch(CounterActions.increment()) }"
-    decrement="{ () => this.dispatch(CounterActions.decrement()) }"
-    count="{ this.props.count }"
-  />
-  <br />
-  <TodoList
-    todos="{ this.props.visibleTodos }"
-    filter="{ this.props.todoFilter }"
-    onAddTodo="{ (text) => this.dispatch(TodoActions.addTodo(text)) }"
-    onClickTodo="{ (index) => this.dispatch(TodoActions.toggleTodo(index)) }"
-    onChangeFilter="{ (filter) => this.dispatch(TodoActions.setVisibilityFilter(filter)) }"
-  />
+<div
+  id='app'
+  class='ui grid container'
+  rt-scope='this.props.dispatch as dispatch'
+>
+  <div class='eight wide column'>
+    <TodoList
+      todos='{ this.props.visibleTodos }'
+      filter='{ this.props.todoFilter }'
+      onAddTodo='{ (text) => dispatch(TodoActions.addTodo(text)) }'
+      onClickTodo='{ (index) => dispatch(TodoActions.toggleTodo(index)) }'
+      onChangeFilter='{ (filter) => dispatch(TodoActions.setVisibilityFilter(filter)) }'
+    />
+  </div>
+  <div class='four wide column'>
+    <Counter
+      increment='{ () => dispatch(CounterActions.increment()) }'
+      decrement='{ () => dispatch(CounterActions.decrement()) }'
+      count='{ this.props.count }'
+    />
+  </div>
 </div>

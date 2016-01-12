@@ -6,8 +6,10 @@
   <AddTodo
     onSubmit="{ (text) => this.props.onAddTodo(text) }"
   />
-  <ul>
-    <li
+
+  <div class='ui big divided list'>
+    <div
+      class='item'
       rt-repeat="item in this.props.todos"
       key="{ item.id }"
     >
@@ -15,8 +17,9 @@
         todo="{ item }"
         onClick="{ () => this.props.onClickTodo(item.id) }"
       />
-    </li>
-  </ul>
+    </div>
+  </div>
+
   <Footer
     filter="{ this.props.filter }"
     onChangeFilter="{ this.props.onChangeFilter }"

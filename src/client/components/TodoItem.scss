@@ -1,11 +1,4 @@
 #todo-item {
-  .active {
-    textDecoration: 'none';
-    cursor: 'pointer';
-  }
-
-  .completed {
-    textDecoration: 'line-through';
-    cursor: 'default';
-  }
+  padding: 10px;
+  font-size: 24px;
 }

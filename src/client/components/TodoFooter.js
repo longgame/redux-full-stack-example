@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import classes from 'classnames';
 
 module.exports = React.createClass({
   propTypes: {
@@ -10,31 +11,30 @@ module.exports = React.createClass({
     ]).isRequired,
   },
   renderFilter: function(filter, name) {
-    if (filter === this.props.filter) {
-      return name;
-    } else {
-      return (
-        <a href='#' onClick={ (e) => {
+    return (
+      <div
+        className={ classes('ui label', {
+          blue: filter === this.props.filter,
+        }) }
+        onClick={ (e) => {
           e.preventDefault()
           this.props.onChangeFilter(filter);
-        }}>
-          { name }
-        </a>
-      );
-    }
+        }
+      }>
+        { name }
+      </div>
+    );
   },
   render: function() {
     return (
-      <p>
-        Show:
-        { ' ' }
+      <div
+        id='todo-footer'
+        className='ui center aligned container'
+      >
         { this.renderFilter('SHOW_ALL', 'All') }
-        { ', ' }
-        { this.renderFilter('SHOW_COMPLETED', 'Completed') }
-        { ', ' }
         { this.renderFilter('SHOW_ACTIVE', 'Active') }
-        { ', ' }
-      </p>
+        { this.renderFilter('SHOW_COMPLETED', 'Completed') }
+      </div>
     );
   }
 });

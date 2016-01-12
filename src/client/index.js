@@ -7,16 +7,18 @@ import reducer from './reducers/index';
 import Header from './containers/Navbar';
 import Body from './containers/App';
 import Footer from './containers/Footer';
+import Dimmer from './containers/Dimmer';
 
 const store = createStore(reducer);
 
-var Content = React.createClass({
+const Content = React.createClass({
   render: function() {
     return (
       <div id='react-content' className='ui container'>
         <Header />
         <Body />
         <Footer />
+        <Dimmer />
       </div>
     );
   }

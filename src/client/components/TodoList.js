@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import template from './TodoList.rt';
+import styles from './TodoList.scss';
 
 module.exports = React.createClass({
   propTypes: {
@@ -17,5 +18,7 @@ module.exports = React.createClass({
     onClickTodo: PropTypes.func,
     onChangeFilter: PropTypes.func,
   },
-  render: template
+  render: function() {
+    return template.apply(this);
+  }
 });

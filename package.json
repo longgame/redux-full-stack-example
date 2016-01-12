@@ -12,6 +12,7 @@
   "dependencies": {
     "async": "^1.5.1",
     "bcrypt": "^0.8.5",
+    "classnames": "^2.2.3",
     "co": "^4.6.0",
     "debug": "^2.2.0",
     "express": "^4.13.3",
