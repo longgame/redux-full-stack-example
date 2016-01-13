@@ -1,18 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 
+import Button from './Button';
+
 module.exports = React.createClass({
   propTypes: {
-    type: PropTypes.string,
     onClick: PropTypes.func,
   },
   render: function() {
     return (
       <div
-        className='ui button'
+        className='ui reset button'
         onClick={ this.props.onClick }
-        type={ this.props.type || 'button' }
       >
-        { this.props.children }
+        { this.props.children || 'Reset' }
       </div>
     );
   }

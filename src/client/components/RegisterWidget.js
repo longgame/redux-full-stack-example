@@ -9,6 +9,7 @@ module.exports = React.createClass({
     isEnabled: PropTypes.bool,
     onOpen: PropTypes.func,
     onClose: PropTypes.func,
+    registerAction: PropTypes.func.isRequired,
   },
   getInitialState: function() {
     return {
@@ -41,7 +42,9 @@ module.exports = React.createClass({
           id='register-modal'
           isActive={ (this.props.isEnabled && this.state.isOpen) }
         >
-          <RegisterForm />
+          <RegisterForm
+            onSubmit={ (data) => console.log(data) }
+          />
         </Modal>
       </div>
     );

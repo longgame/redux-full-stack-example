@@ -8,9 +8,7 @@ import template from './Dimmer.rt';
 var Dimmer = React.createClass({
   propTypes: {
     dispatch: PropTypes.func.isRequired,
-    dimmer: PropTypes.shape({
-      visible: PropTypes.bool,
-    }).isRequired,
+    isVisible: PropTypes.bool,
   },
   render: function() {
     return template.apply(this);

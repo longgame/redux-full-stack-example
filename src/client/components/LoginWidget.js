@@ -6,6 +6,7 @@ import LoginForm from './LoginForm';
 
 module.exports = React.createClass({
   propTypes: {
+    loginAction: PropTypes.func.isRequired,
     isEnabled: PropTypes.bool,
     onOpen: PropTypes.func,
     onClose: PropTypes.func,
@@ -15,11 +16,6 @@ module.exports = React.createClass({
       isOpen: false,
     };
   },
-  componentWillReceiveProps: function(nextProps) {
-    if (this.state.isOpen && (nextProps.isEnabled === false)) {
-      this.closeWidget();
-    }
-  },
   openWidget: function() {
     this.props.onOpen();
     this.setState({ isOpen: true });
@@ -27,6 +23,11 @@ module.exports = React.createClass({
   closeWidget: function() {
     this.setState({ isOpen: false });
     this.props.onClose();
+  },
+  componentWillReceiveProps: function(nextProps) {
+    if (this.state.isOpen && (nextProps.isEnabled === false)) {
+      this.closeWidget();
+    }
   },
   render: function() {
     return (
@@ -41,7 +42,9 @@ module.exports = React.createClass({
           id='login-modal'
           isActive={ (this.props.isEnabled && this.state.isOpen) }
         >
-          <LoginForm />
+          <LoginForm
+            onSubmit={ (data) => console.log("ACTION", data) }
+          />
         </Modal>
       </div>
     );

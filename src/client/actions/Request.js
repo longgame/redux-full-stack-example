@@ -1,7 +1,4 @@
 export const PING_SERVER = 'PING_SERVER';
-export const PING_SERVER_SUCCESS = 'PING_SERVER_SUCCESS';
-export const PING_SERVER_FAILURE = 'PING_SERVER_FAILURE';
-
 export function pingServer(request) {
   return {
     type: QUERY_SERVER,
@@ -10,12 +7,14 @@ export function pingServer(request) {
   };
 }
 
+export const PING_SERVER_SUCCESS = 'PING_SERVER_SUCCESS';
 export function pingServerSuccess(response) {
   type: PING_SERVER_SUCCESS,
   timestamp: Date.now(),
   response
 }
 
+export const PING_SERVER_FAILURE = 'PING_SERVER_FAILURE';
 export function pingServerFailure(error) {
   type: PING_SERVER_FAILURE,
   timestamp: Date.now(),
