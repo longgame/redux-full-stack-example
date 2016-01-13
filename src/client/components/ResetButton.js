@@ -7,12 +7,13 @@ module.exports = React.createClass({
     onClick: PropTypes.func,
   },
   render: function() {
+    const { children ...props } = this.props;
     return (
-      <div
+      <Button
         className='ui reset button'
-        onClick={ this.props.onClick }
+        { ...props }
       >
-        { this.props.children || 'Reset' }
+        { children || 'Reset' }
       </div>
     );
   }

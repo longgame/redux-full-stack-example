@@ -1,17 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 
+import Button from './Button';
+
 module.exports = React.createClass({
-  propTypes: {
-    onClick: PropTypes.func,
-  },
   render: function() {
+    const { ...props } = this.props;
     return (
-      <div
+      <Button
         className='ui clear button'
-        onClick={ this.props.onClick }
+        { ...props }
       >
-        { this.props.children || 'Clear' }
-      </div>
+        { this.props.children }
+      </Button>
     );
   }
 });

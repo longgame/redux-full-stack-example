@@ -1,5 +1,3 @@
-<rt-require dependency='../components/Hello' as='Hello' />
-
 <rt-require dependency='../components/ReduxCounter' as='Counter' />
 <rt-require dependency='../actions/Counter' as='CounterActions' />
 

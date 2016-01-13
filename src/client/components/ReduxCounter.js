@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+import Button from './Button';
+
 import styles from './ReduxCounter.scss';
 
 module.exports = React.createClass({
@@ -11,19 +13,20 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div id='redux-counter' className='ui center aligned container'>
-        <div className='ui circular orange button'
+        <Button
+          className='ui circular orange button'
           onClick={ this.props.decrement }
         >
           -
-        </div>
+        </Button>
         <div className='ui label'>
           { this.props.count }
         </div>
-        <div className='ui circular olive button'
+        <Button className='ui circular olive button'
           onClick={ this.props.increment }
         >
           +
-        </div>
+        </Button>
       </div>
     );
   }

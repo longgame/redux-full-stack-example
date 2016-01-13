@@ -6,14 +6,18 @@ module.exports = React.createClass({
     isActive: PropTypes.bool.isRequired
   },
   render: function() {
+    const { isActive, ...props } = this.props;
     return (
-      <div
-        id='modal'
-        className={ classes('ui modal', {
-          active: this.props.isActive,
-        }) }
-      >
-        { this.props.children }
+      <div> { /* Shield modals from class manipulation */ }
+        <div
+          className={ classes('ui modal', {
+              active: this.props.isActive,
+            })
+          }
+          { ...props }
+        >
+          { this.props.children }
+        </div>
       </div>
     );
   }

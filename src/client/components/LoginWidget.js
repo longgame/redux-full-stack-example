@@ -34,6 +34,7 @@ module.exports = React.createClass({
     return (
       <div id='login-widget'>
         <Button
+          className='ui primary button'
           onClick={ this.openWidget }
         >
           Login

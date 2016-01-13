@@ -1,16 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 
 module.exports = React.createClass({
-  propTypes: {
-    type: PropTypes.string,
-    onClick: PropTypes.func,
-  },
   render: function() {
+    const { ...props } = this.props;
     return (
       <div
         className='ui button'
-        onClick={ this.props.onClick }
-        type={ this.props.type || 'button' }
+        { ...props }
       >
         { this.props.children }
       </div>
