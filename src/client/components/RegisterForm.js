@@ -53,8 +53,10 @@ module.exports = React.createClass({
             <input name='password2' type='password' />
           </Field>
           <Field>
-            <input name='agreement' type='checkbox' />
-            <label>I have read and agree to the Terms of Service and Privacy Policy.</label>
+            <div className='ui checkbox'>
+              <input name='agreement' type='checkbox' />
+              <label>I have read and agree to the Terms of Service and Privacy Policy.</label>
+            </div>
           </Field>
           <Submit>Register</Submit>
           <Clear />

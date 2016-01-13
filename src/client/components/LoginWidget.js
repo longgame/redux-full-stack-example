@@ -21,6 +21,7 @@ module.exports = React.createClass({
     this.setState({ isOpen: true });
   },
   closeWidget: function() {
+    $('#login-widget').form('clear');
     this.setState({ isOpen: false });
     this.props.onClose();
   },
@@ -33,17 +34,18 @@ module.exports = React.createClass({
     return (
       <div id='login-widget'>
         <Button
-          id='login-button'
           onClick={ this.openWidget }
         >
           Login
         </Button>
         <Modal
-          id='login-modal'
           isActive={ (this.props.isEnabled && this.state.isOpen) }
         >
           <LoginForm
-            onSubmit={ (data) => console.log("ACTION", data) }
+            onSubmit={ (refs) => {
+              this.props.loginAction(refs.email, refs.password);
+              this.closeWidget();
+            }}
           />
         </Modal>
       </div>
