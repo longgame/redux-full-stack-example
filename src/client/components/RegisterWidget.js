@@ -1,15 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 
-import Button from './Button';
-import Modal from './Modal';
+import Button from '../vitamins/Button';
+import Dimmer from '../vitamins/PageDimmer';
+import Modal from '../vitamins/Modal';
+
 import RegisterForm from './RegisterForm';
 
 module.exports = React.createClass({
   propTypes: {
     registerAction: PropTypes.func.isRequired,
-    isEnabled: PropTypes.bool,
-    onOpen: PropTypes.func,
-    onClose: PropTypes.func,
   },
   getInitialState: function() {
     return {
@@ -17,29 +16,23 @@ module.exports = React.createClass({
     };
   },
   openWidget: function() {
-    this.props.onOpen();
     this.setState({ isOpen: true });
   },
   closeWidget: function() {
     $('#register-widget').form('clear');
     this.setState({ isOpen: false });
-    this.props.onClose();
-  },
-  componentWillReceiveProps: function(nextProps) {
-    if (this.state.isOpen && (nextProps.isEnabled === false)) {
-      this.closeWidget();
-    }
   },
   render: function() {
     return (
       <div id='register-widget'>
         <Button
+          className='ui teal button'
           onClick={ this.openWidget }
         >
           Register
         </Button>
         <Modal
-          isActive={ (this.props.isEnabled && this.state.isOpen) }
+          isActive={ this.state.isOpen }
         >
           <RegisterForm
             onSubmit={ (refs) => {
@@ -48,6 +41,10 @@ module.exports = React.createClass({
             }}
           />
         </Modal>
+        <Dimmer
+          isActive={ this.state.isOpen }
+          onClick={ this.closeWidget }
+        />
       </div>
     );
   }

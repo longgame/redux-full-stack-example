@@ -2,8 +2,10 @@
 <rt-require dependency='../actions/Auth' as='AuthActions' />
 <rt-require dependency='../actions/Session' as='SessionActions' />
 
-<rt-require dependency='../components/Counter' as='Counter' />
-<rt-require dependency='../components/UserWidget' as='UserWidget' />
+<rt-require dependency='../vitamins/Menu' as='Menu' />
+<rt-require dependency='../vitamins/Item' as='Item' />
+
+<rt-require dependency='../components/SessionWidget' as='SessionWidget' />
 <rt-require dependency='../components/RegisterWidget' as='RegisterWidget' />
 
 <div
@@ -11,7 +13,7 @@
   class='ui container'
   rt-scope='this.props.dispatch as dispatch'
 >
-  <div class='ui inverted menu'>
+  <Menu class='ui inverted menu'>
     <a href='#' class='brand item'>
       <img class='ui mini image' src='brand.png'>
     </a>
@@ -20,18 +22,10 @@
 
     <div class='right menu'>
       <div class='item'>
-        <Counter
-          onClick='{ () => dispatch(SessionActions.refreshSession()) }'
-        />
-      </div>
-      <div class='item'>
-        <UserWidget
+        <SessionWidget
           isAuthenticated='{ this.props.session.isAuthenticated }'
           loginAction='{ (u,p) => dispatch(AuthActions.loginUser(u,p)) }'
           logoutAction='{ () => dispatch(AuthActions.logoutUser()) }'
-          isEnabled='{ this.props.dimmerVisible }'
-          onOpen='{ () => dispatch(DimmerActions.show()) }'
-          onClose='{ () => dispatch(DimmerActions.hide()) }'
         />
       </div>
       <div class='item'>
@@ -43,5 +37,5 @@
         />
       </div>
     </div>
-  </div>
+  </Menu>
 </div>

@@ -18,7 +18,6 @@ import reducer from './reducers/index';
 import Header from './containers/Navbar';
 import Body from './containers/App';
 import Footer from './containers/Footer';
-import Dimmer from './containers/Dimmer';
 
 const store = createStoreWithMiddleware(reducer);
 
@@ -29,7 +28,6 @@ const Content = React.createClass({
         <Header />
         <Body />
         <Footer />
-        <Dimmer />
       </div>
     );
   }

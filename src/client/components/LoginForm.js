@@ -1,10 +1,10 @@
 import _ from 'underscore';
 import React, { Component, PropTypes } from 'react';
 
-import Form from './Form';
-import Field from './FormField';
-import Submit from './SubmitButton';
-import Clear from './ClearButton';
+import Form from '../vitamins/Form';
+import Field from '../vitamins/Field';
+import Submit from '../vitamins/SubmitButton';
+import Clear from '../vitamins/ClearButton';
 
 module.exports = React.createClass({
   propTypes: {

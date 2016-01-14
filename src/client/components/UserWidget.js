@@ -1,29 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 
-import Button from './Button';
-import LoginWidget from './LoginWidget';
+import Button from '../vitamins/Button';
 
 module.exports = React.createClass({
   propTypes: {
-    isAuthenticated: PropTypes.bool.isRequired,
+    logoutAction: PropTypes.func.isRequired,
   },
   render: function() {
     const { loginAction, logoutAction, ...props } = this.props;
-    if (this.props.isAuthenticated === false) {
-      return (
-        <LoginWidget
-          loginAction={ loginAction }
-          { ...props }
-        />
-      );
-    } else {
-      return (
-        <Button
-          onClick={ logoutAction }
-        >
-          Logout
-        </Button>
-      );
-    }
+    return (
+      <Button
+        onClick={ logoutAction }
+      >
+        Logout
+      </Button>
+    );
   }
 });
