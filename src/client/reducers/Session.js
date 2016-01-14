@@ -2,13 +2,13 @@ import _ from 'underscore';
 import { handleActions } from 'redux-actions';
 
 import {
-  REFRESH_SESSION,
+  UPDATE_SESSION,
 } from '../actions/Session';
 
 import {
-  LOGIN_SUCCESS,
-  REGISTER_SUCCESS,
-  LOGOUT_SUCCESS
+  LOGIN_USER,
+  REGISTER_USER,
+  LOGOUT_USER
 } from '../actions/Auth';
 
 const schema = {
@@ -22,17 +22,17 @@ export default handleActions({
       summary: action.payload
     }, state);
   },
-  LOGIN_SUCCESS: (state, action) => {
+  LOGIN_USER: (state, action) => {
     return _.defaults({
       isAuthenticated: true,
     }, state);
   },
-  REGISTER_SUCCESS: (state, action) => {
+  REGISTER_USER: (state, action) => {
     return _.defaults({
       isAuthenticated: true,
     }, state);
   },
-  LOGOUT_SUCCESS: (state, action) => {
+  LOGOUT_USER: (state, action) => {
     return schema;
   },
 }, schema);

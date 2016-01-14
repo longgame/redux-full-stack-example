@@ -3,7 +3,7 @@
 <rt-require dependency='../actions/Session' as='SessionActions' />
 
 <rt-require dependency='../components/Counter' as='Counter' />
-<rt-require dependency='../components/LoginWidget' as='LoginWidget' />
+<rt-require dependency='../components/UserWidget' as='UserWidget' />
 <rt-require dependency='../components/RegisterWidget' as='RegisterWidget' />
 
 <div
@@ -25,8 +25,10 @@
         />
       </div>
       <div class='item'>
-        <LoginWidget
+        <UserWidget
+          isAuthenticated='{ this.props.session.isAuthenticated }'
           loginAction='{ (u,p) => dispatch(AuthActions.loginUser(u,p)) }'
+          logoutAction='{ () => dispatch(AuthActions.logoutUser()) }'
           isEnabled='{ this.props.dimmerVisible }'
           onOpen='{ () => dispatch(DimmerActions.show()) }'
           onClose='{ () => dispatch(DimmerActions.hide()) }'

@@ -15,7 +15,8 @@ var Navbar = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    dimmerVisible: state.dimmer.isVisible
+    dimmerVisible: state.dimmer.isVisible,
+    session: state.session,
   };
 }
 
