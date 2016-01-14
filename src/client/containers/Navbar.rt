@@ -1,10 +1,10 @@
-<rt-require dependency='../components/StateCounter' as='Counter' />
+<rt-require dependency='../actions/Dimmer' as='DimmerActions' />
+<rt-require dependency='../actions/Auth' as='AuthActions' />
+<rt-require dependency='../actions/Session' as='SessionActions' />
 
+<rt-require dependency='../components/Counter' as='Counter' />
 <rt-require dependency='../components/LoginWidget' as='LoginWidget' />
 <rt-require dependency='../components/RegisterWidget' as='RegisterWidget' />
-
-<rt-require dependency='../actions/Dimmer' as='DimmerActions' />
-<rt-require dependency='../actions/Session' as='SessionActions' />
 
 <div
   id='navbar'
@@ -20,8 +20,13 @@
 
     <div class='right menu'>
       <div class='item'>
+        <Counter
+          onClick='{ () => dispatch(SessionActions.refreshSession()) }'
+        />
+      </div>
+      <div class='item'>
         <LoginWidget
-          loginAction='{ (u,p) => dispatch(SessionActions.login(u,p)) }'
+          loginAction='{ (u,p) => dispatch(AuthActions.loginUser(u,p)) }'
           isEnabled='{ this.props.dimmerVisible }'
           onOpen='{ () => dispatch(DimmerActions.show()) }'
           onClose='{ () => dispatch(DimmerActions.hide()) }'
@@ -29,7 +34,7 @@
       </div>
       <div class='item'>
         <RegisterWidget
-          registerAction='{ (u,p) => dispatch(SessionActions.register(u,p)) }'
+          registerAction='{ (u,p) => dispatch(AuthActions.registerUser(u,p)) }'
           isEnabled='{ this.props.dimmerVisible }'
           onOpen='{ () => dispatch(DimmerActions.show()) }'
           onClose='{ () => dispatch(DimmerActions.hide()) }'

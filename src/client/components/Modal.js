@@ -8,10 +8,10 @@ module.exports = React.createClass({
   render: function() {
     const { isActive, ...props } = this.props;
     return (
-      <div> { /* Shield modals from class manipulation */ }
+      <div> { /* shield class */ }
         <div
           className={ classes('ui modal', {
-              active: this.props.isActive,
+              active: isActive,
             })
           }
           { ...props }

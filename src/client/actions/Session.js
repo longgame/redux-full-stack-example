@@ -1,19 +1,16 @@
-export const POST_LOGIN = 'POST_LOGIN';
-export function login(email, password) {
-  return {
-    type: POST_LOGIN,
-    timestamp: Date.now(),
-    email,
-    password
-  };
-}
+import request from 'axios';
 
-export const POST_REGISTER = 'POST_REGISTER';
-export function register(email, password) {
-  return {
-    type: POST_REGISTER,
-    timestamp: Date.now(),
-    email,
-    password
+import { createAction } from 'redux-actions';
+
+export const UPDATE_SESSION = 'UPDATE_SESSION';
+const updateSession = createAction(UPDATE_SESSION);
+
+export const REFRESH_SESSION = 'REFRESH_SESSION';
+export function refreshSession(email, password) {
+  return (dispatch) => {
+    request.get('/session')
+      .then((res) => dispatch(updateSession(res.data)))
+      .catch((err) => dispatch(updateSession(err)));
+    dispatch(createAction(REFRESH_SESSION)({ email }));
   };
 }
