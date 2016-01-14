@@ -6,7 +6,6 @@ import template from './Navbar.rt';
 var Navbar = React.createClass({
   propTypes: {
     dispatch: PropTypes.func.isRequired,
-    dimmerVisible: PropTypes.bool.isRequired,
   },
   render: function() {
     return template.apply(this);
@@ -15,7 +14,6 @@ var Navbar = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    dimmerVisible: state.dimmer.isVisible,
     session: state.session,
   };
 }

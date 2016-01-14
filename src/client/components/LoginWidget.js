@@ -26,7 +26,6 @@ module.exports = React.createClass({
     return (
       <div id='login-widget'>
         <Button
-          className='ui teal button'
           onClick={ this.openWidget }
         >
           Login

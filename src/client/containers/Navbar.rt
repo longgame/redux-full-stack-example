@@ -1,4 +1,3 @@
-<rt-require dependency='../actions/Dimmer' as='DimmerActions' />
 <rt-require dependency='../actions/Auth' as='AuthActions' />
 <rt-require dependency='../actions/Session' as='SessionActions' />
 
