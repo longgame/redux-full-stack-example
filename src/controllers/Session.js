@@ -2,7 +2,7 @@
 
 exports.show = (req, res) => {
   var out = {
-    authenticated: req.isAuthenticated(),
+    isAuthenticated: req.isAuthenticated(),
   };
   if (req.isAuthenticated()) {
     out['summary'] = req.user.summary;

@@ -17,9 +17,11 @@ const schema = {
 };
 
 export default handleActions({
-  UPDATE_SESSION: (state, action) => {
+  REFRESH_SESSION: (state, action) => {
+    const { isAuthenticated, summary } = action.payload;
     return _.defaults({
-      summary: action.payload
+      isAuthenticated,
+      summary
     }, state);
   },
   LOGIN_USER: (state, action) => {

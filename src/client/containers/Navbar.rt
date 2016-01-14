@@ -15,7 +15,11 @@
 >
   <Menu class='ui inverted menu'>
     <a href='#' class='brand item'>
-      <img class='ui mini image' src='brand.png'>
+      <img
+        class='ui mini image'
+        src='brand.png'
+        onClick='{ () => dispatch(SessionActions.refreshSession()) }'
+      >
     </a>
     <a href='#' class='item'>Lobby</a>
     <a href='#' class='item'>About</a>
@@ -26,14 +30,6 @@
           isAuthenticated='{ this.props.session.isAuthenticated }'
           loginAction='{ (u,p) => dispatch(AuthActions.loginUser(u,p)) }'
           logoutAction='{ () => dispatch(AuthActions.logoutUser()) }'
-        />
-      </div>
-      <div class='item'>
-        <RegisterWidget
-          registerAction='{ (u,p) => dispatch(AuthActions.registerUser(u,p)) }'
-          isEnabled='{ this.props.dimmerVisible }'
-          onOpen='{ () => dispatch(DimmerActions.show()) }'
-          onClose='{ () => dispatch(DimmerActions.hide()) }'
         />
       </div>
     </div>

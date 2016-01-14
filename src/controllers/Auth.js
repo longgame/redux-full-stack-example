@@ -21,7 +21,9 @@ exports.register = (req, res) => {
     // FIXME: Dispatch verification email
 
     req.login(user, (err) => {
-      return res.send({ message: 'Registration succeeded' });
+      return res.send({
+        message: 'Registration succeeded'
+      });
     });
   })(req, res);
 };
