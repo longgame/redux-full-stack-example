@@ -1,9 +1,6 @@
-<rt-require dependency='../components/ProfileForm' as='ProfileForm' />
-
 <div
   id='app'
   class='ui container'
   rt-scope='this.props.dispatch as dispatch'
 >
-<ProfileForm />
 </div>

@@ -5,7 +5,13 @@ exports.fetch = function *() {
   return JSON.parse(res.text);
 };
 
+exports.isAuthenticated = function *() {
+  var res = yield request.get('/session').end();
+  return JSON.parse(res.text).isAuthenticated;
+};
+
+/* Depricated */
 exports.authenticated = function *() {
   var res = yield request.get('/session').end();
-  return JSON.parse(res.text).authenticated;
+  return JSON.parse(res.text).isAuthenticated;
 };

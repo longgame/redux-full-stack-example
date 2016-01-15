@@ -7,7 +7,11 @@ module.exports = React.createClass({
   render: function() {
     const { glyph, ...props } = this.props;
     return (
-      <i className={ glyph+' flag' } { ...props }></i>
+      <i
+        className={ glyph+' flag' }
+        { ...props }
+        >
+      </i>
     );
   }
 });
