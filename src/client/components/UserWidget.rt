@@ -1,0 +1,38 @@
+<rt-require dependency='../vitamins/Button' as='Button' />
+<rt-require dependency='../vitamins/PageDimmer' as='Dimmer' />
+<rt-require dependency='../vitamins/Divider' as='Divider' />
+<rt-require dependency='../vitamins/Dropdown' as='Dropdown' />
+<rt-require dependency='../vitamins/Icon' as='Icon' />
+<rt-require dependency='../vitamins/Item' as='Item' />
+<rt-require dependency='../vitamins/Menu' as='Menu' />
+<rt-require dependency='../vitamins/Modal' as='Modal' />
+
+<rt-require dependency='./ProfileForm' as='ProfileForm' />
+
+<div id='user-widget'>
+  <Dropdown>
+    <Icon className='big inverted user icon' />
+    <Menu id='user-menu'>
+      <Item onClick='{ () => this.openWidget("PROFILE") }'>Profile</Item>
+      <Divider />
+      <Item
+        onClick='{ this.props.logoutAction }'
+        >
+        Logout
+      </Item>
+    </Menu>
+  </Dropdown>
+
+  <Modal
+    isActive='{
+      this.state.isOpen && (this.state.frame === "PROFILE")
+    }'
+    >
+    <ProfileForm />
+  </Modal>
+
+  <Dimmer
+    isActive='{ this.state.isOpen }'
+    onClick='{ this.closeWidget }'
+  />
+</div>

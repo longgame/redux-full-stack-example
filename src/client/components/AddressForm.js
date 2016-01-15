@@ -1,13 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import Form from '../vitamins/Form';
-import Field from '../vitamins/Field';
-import Fields from '../vitamins/Fields';
-import Submit from '../vitamins/SubmitButton';
-import Clear from '../vitamins/ClearButton';
-
-import StateDropdown from './StateDropdown';
-import CountryDropdown from './CountryDropdown';
+import template from 'AddressForm.rt';
 
 module.exports = React.createClass({
   propTypes: {
@@ -36,41 +29,6 @@ module.exports = React.createClass({
       .submit(this.submitForm);
   },
   render: function() {
-    return (
-      <div id='address-form'>
-        <Form>
-          <Field>
-            <Fields>
-              <Field className='eight wide field'>
-                <label>Address:</label>
-                <input name='address1' type='text' />
-              </Field>
-              <Field className='four wide field'>
-                <label>Suite:</label>
-                <input name='address2' type='text' />
-              </Field>
-            </Fields>
-          </Field>
-          <Field>
-            <Fields>
-              <Field className='four wide field'>
-                <label>State:</label>
-                <StateDropdown />
-              </Field>
-              <Field className='four wide field'>
-                <label>Country:</label>
-                <CountryDropdown />
-              </Field>
-              <Field className='four wide field'>
-                <label>Postal Code:</label>
-                <input name='postal_code' type='text' />
-              </Field>
-            </Fields>
-          </Field>
-          <Submit>Save</Submit>
-          <Clear />
-        </Form>
-      </div>
-    );
+    return template.apply(this);
   }
 });

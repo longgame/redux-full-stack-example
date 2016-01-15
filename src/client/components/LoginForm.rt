@@ -1,0 +1,19 @@
+<rt-require dependency='../vitamins/Form' as='Form' />
+<rt-require dependency='../vitamins/Field' as='Field' />
+<rt-require dependency='../vitamins/SubmitButton' as='Submit' />
+<rt-require dependency='../vitamins/ClearButton' as='Clear' />
+
+<div id='login-form'>
+  <Form>
+    <Field>
+      <label>Email:</label>
+      <input name='email' type='text' />
+    </Field>
+    <Field>
+      <label>Password:</label>
+      <input name='password' type='password' />
+    </Field>
+    <Submit>Login</Submit>
+    <Clear />
+  </Form>
+</div>

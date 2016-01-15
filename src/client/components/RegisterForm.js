@@ -1,10 +1,6 @@
-import _ from 'underscore';
 import React, { Component, PropTypes } from 'react';
 
-import Form from '../vitamins/Form';
-import Field from '../vitamins/Field';
-import Submit from '../vitamins/SubmitButton';
-import Clear from '../vitamins/ClearButton';
+import template from './RegisterForm.rt';
 
 module.exports = React.createClass({
   propTypes: {
@@ -37,31 +33,6 @@ module.exports = React.createClass({
       .submit(this.submitForm);
   },
   render: function() {
-    return (
-      <div id='register-form'>
-        <Form>
-          <Field>
-            <label>Email:</label>
-            <input name='email' type='text' />
-          </Field>
-          <Field>
-            <label>Password:</label>
-            <input name='password' type='password' />
-          </Field>
-          <Field>
-            <label>Confirm Password:</label>
-            <input name='password2' type='password' />
-          </Field>
-          <Field>
-            <div className='ui checkbox'>
-              <input name='agreement' type='checkbox' />
-              <label>I have read and agree to the Terms of Service and Privacy Policy.</label>
-            </div>
-          </Field>
-          <Submit>Register</Submit>
-          <Clear />
-        </Form>
-      </div>
-    );
+    return template.apply(this);
   }
 });

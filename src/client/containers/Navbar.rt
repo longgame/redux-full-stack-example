@@ -5,7 +5,6 @@
 <rt-require dependency='../vitamins/Item' as='Item' />
 
 <rt-require dependency='../components/SessionWidget' as='SessionWidget' />
-<rt-require dependency='../components/RegisterWidget' as='RegisterWidget' />
 
 <div
   id='navbar'

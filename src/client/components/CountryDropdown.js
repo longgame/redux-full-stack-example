@@ -10,7 +10,6 @@ import Flag from '../vitamins/Flag';
 
 module.exports = React.createClass({
   render: function() {
-    const { logoutAction, ...props } = this.props;
     const countries = _.sortBy(iso3166.data, (country) => country.name);
     
     return (

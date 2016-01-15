@@ -13,9 +13,9 @@ module.exports = React.createClass({
     country: PropTypes.string
   },
   render: function() {
-    const { logoutAction, ...props } = this.props;
     var states = iso3166.country(this.props.country || 'us').sub;
     states = _.sortBy(states, (state) => state.name);
+
     return (
       <Dropdown className='ui search selection dropdown'>
         <input type='hidden' name='state' />

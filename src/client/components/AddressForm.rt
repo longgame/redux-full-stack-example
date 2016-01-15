@@ -1,0 +1,43 @@
+<rt-require dependency='../vitamins/Form' as='Form' />
+<rt-require dependency='../vitamins/Field' as='Field' />
+<rt-require dependency='../vitamins/Fields' as='Fields' />
+<rt-require dependency='../vitamins/SubmitButton' as='Submit' />
+<rt-require dependency='../vitamins/ClearButton' as='Clear' />
+
+<rt-require dependency='./StateDropdown' as='StateDropdown' />
+<rt-require dependency='./CountryDropdown' as='CountryDropdown' />
+
+<div id='address-form'>
+  <Form>
+    <Field>
+      <Fields>
+        <Field className='eight wide field'>
+          <label>Address:</label>
+          <input name='address1' type='text' />
+        </Field>
+        <Field className='four wide field'>
+          <label>Suite:</label>
+          <input name='address2' type='text' />
+        </Field>
+      </Fields>
+    </Field>
+    <Field>
+      <Fields>
+        <Field className='four wide field'>
+          <label>State:</label>
+          <StateDropdown />
+        </Field>
+        <Field className='four wide field'>
+          <label>Country:</label>
+          <CountryDropdown />
+        </Field>
+        <Field className='four wide field'>
+          <label>Postal Code:</label>
+          <input name='postal_code' type='text' />
+        </Field>
+      </Fields>
+    </Field>
+    <Submit>Save</Submit>
+    <Clear />
+  </Form>
+</div>

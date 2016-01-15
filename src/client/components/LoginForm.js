@@ -1,9 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import Form from '../vitamins/Form';
-import Field from '../vitamins/Field';
-import Submit from '../vitamins/SubmitButton';
-import Clear from '../vitamins/ClearButton';
+import template from './LoginForm.rt';
 
 module.exports = React.createClass({
   propTypes: {
@@ -26,21 +23,6 @@ module.exports = React.createClass({
       .submit(this.submitForm);
   },
   render: function() {
-    return (
-      <div id='login-form'>
-        <Form>
-          <Field>
-            <label>Email:</label>
-            <input name='email' type='text' />
-          </Field>
-          <Field>
-            <label>Password:</label>
-            <input name='password' type='password' />
-          </Field>
-          <Submit>Login</Submit>
-          <Clear />
-        </Form>
-      </div>
-    );
+    return template.apply(this);
   }
 });

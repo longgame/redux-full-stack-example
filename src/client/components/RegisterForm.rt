@@ -1,0 +1,29 @@
+<rt-require dependency='../vitamins/Form' as='Form' />
+<rt-require dependency='../vitamins/Field' as='Field' />
+<rt-require dependency='../vitamins/SubmitButton' as='Submit' />
+<rt-require dependency='../vitamins/ClearButton' as='Clear' />
+
+<div id='register-form'>
+  <Form>
+    <Field>
+      <label>Email:</label>
+      <input name='email' type='text' />
+    </Field>
+    <Field>
+      <label>Password:</label>
+      <input name='password' type='password' />
+    </Field>
+    <Field>
+      <label>Confirm Password:</label>
+      <input name='password2' type='password' />
+    </Field>
+    <Field>
+      <div className='ui checkbox'>
+        <input name='agreement' type='checkbox' />
+        <label>I have read and agree to the Terms of Service and Privacy Policy.</label>
+      </div>
+    </Field>
+    <Submit>Register</Submit>
+    <Clear />
+  </Form>
+</div>

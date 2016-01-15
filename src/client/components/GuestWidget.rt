@@ -1,0 +1,39 @@
+<rt-require dependency='../vitamins/Button' as='Button' />
+<rt-require dependency='../vitamins/PageDimmer' as='Dimmer' />
+<rt-require dependency='../vitamins/Modal' as='Modal' />
+
+<rt-require dependency='./LoginForm' as='LoginForm' />
+<rt-require dependency='./RegisterForm' as='RegisterForm' />
+
+<div id='guest-widget'>
+  <Button
+    onClick='{ () => this.openWidget("LOGIN") }'
+    >
+    Login
+  </Button>
+
+  <Modal
+    isActive='{
+      this.state.isOpen && (this.state.frame === "LOGIN")
+    }'
+    >
+    <LoginForm
+      onSubmit='{ (refs) => this.props.loginAction(refs.email, refs.password) }'
+      />
+  </Modal>
+
+  <Modal
+    isActive='{
+      this.state.isOpen && (this.state.frame === "REGISTER")
+    }'
+    >
+    <RegisterForm
+      onSubmit='{ (refs) => this.props.registerAction(refs.email, refs.password) }'
+      />
+  </Modal>
+
+  <Dimmer
+    isActive='{ this.state.isOpen }'
+    onClick='{ this.closeWidget }'
+    />
+</div>

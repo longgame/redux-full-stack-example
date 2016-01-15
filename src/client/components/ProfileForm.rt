@@ -1,0 +1,36 @@
+<rt-require dependency='../vitamins/Form' as='Form' />
+<rt-require dependency='../vitamins/Field' as='Field' />
+<rt-require dependency='../vitamins/Fields' as='Fields' />
+<rt-require dependency='../vitamins/SubmitButton' as='Submit' />
+<rt-require dependency='../vitamins/ClearButton' as='Clear' />
+
+<rt-require dependency='./OccupationDropdown' as='Occupation' />
+
+<div id='profile-form'>
+  <Form>
+    <Fields>
+      <Field className='four wide field'>
+        <label>First Name:</label>
+        <input name='first_name' type='text' />
+      </Field>
+      <Field className='four wide field'>
+        <label>Last Name:</label>
+        <input name='last_name' type='text' />
+      </Field>
+    </Fields>
+    <Field className='six wide field'>
+      <label>Occupation:</label>
+      <Occupation />
+    </Field>
+    <Field className='six wide field'>
+      <label>Phone Number:</label>
+      <input
+        name='phone_number'
+        type='password'
+        placeholder='(xxx) xxx-xxxx'
+        />
+    </Field>
+    <Submit />
+    <Clear />
+  </Form>
+</div>
