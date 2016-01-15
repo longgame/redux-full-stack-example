@@ -8,9 +8,10 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var Redis = require('redis');
 
-var config = require('./config/config');
+var config = require('../config/config');
 
 global.app = module.exports = express();
+global.__approot = path.join(__dirname, '..');
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'top-secret',
@@ -18,16 +19,14 @@ app.use(session({
   saveUninitialized: false,
 }));
 
-app.set('root', __dirname);
 app.set('config', config);
-app.set('view engine', 'jade');
-app.set('views', './src/views');
-app.set('models', require('./src/models'));
-app.set('controllers', require('./src/controllers'));
-app.set('database', app.get('models').sequelize);
-app.set('kue', require('./lib/kue'));
 
-var passport = require('./lib/passport');
+app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'));
+
+app.set('kue', require('../lib/kue'));
+
+var passport = require('../lib/passport');
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -46,8 +45,8 @@ switch(config.env) {
     break;
 }
 
-app.use(express.static(__dirname + '/dist'));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/../dist'));
+app.use(express.static(__dirname + '/../public'));
 
-var router = require('./src/routes');
+var router = require('./routes');
 app.use('/', router);

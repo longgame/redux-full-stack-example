@@ -1,8 +1,12 @@
 'use strict';
 
+var models = require('../models');
+var express = require('express');
+var router = module.exports = express.Router();
+
 var passport = require('passport');
 
-exports.register = (req, res) => {
+router.post('/register', (req, res) => {
   passport.authenticate('register', {}, (err, user, info) => {
     if (err) throw new Error(err);
     if (!user) {
@@ -26,9 +30,9 @@ exports.register = (req, res) => {
       });
     });
   })(req, res);
-};
+});
 
-exports.login = (req, res) => {
+router.post('/login', (req, res) => {
   passport.authenticate('login', {}, (err, user, info) => {
     if (err) throw new Error(err);
     if (user) {
@@ -47,9 +51,9 @@ exports.login = (req, res) => {
       res.send(info);
     }
   })(req, res);
-};
+});
 
-exports.logout = (req, res) => {
+router.post('/logout', (req, res) => {
   req.logout();
   res.send({ message: 'Logout succeeded' });
-};
+});

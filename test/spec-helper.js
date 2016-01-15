@@ -16,7 +16,11 @@ global.should = chai.should();
 global.co = require('co');
 global.sleep = require('co-sleep');
 
-global.app = require('../app');
+global.__approot = path.join(__dirname, '..');
+global.app = require(path.join(__approot, 'src'));
+
+global.Models = require(path.join(__approot, 'src/models'));
+
 global.request = require('co-supertest').agent(app.listen());
 global.nock = require('nock');
 

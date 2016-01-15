@@ -2,9 +2,7 @@
 
 var _ = require('lodash');
 var path = require('path');
-var crypto = require(
-  path.join(app.get('root'), 'lib/crypto')
-);
+var crypto = require('../../lib/crypto');
 
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {

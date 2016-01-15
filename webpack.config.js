@@ -4,7 +4,7 @@ var path = require('path'),
     webpack = require('webpack');
 
 module.exports = {
-  context: path.resolve(__dirname, 'src/client'),
+  context: path.resolve(__dirname, 'app'),
   entry: {
     app: [ './index.js' ],
   },

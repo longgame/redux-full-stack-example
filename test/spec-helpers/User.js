@@ -1,6 +1,6 @@
 'use strict;'
 
-var User = app.get('models').User;
+var User = Models.User;
 
 global.test_user = {
   email: 'test@example.com',

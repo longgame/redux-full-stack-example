@@ -1,24 +1,21 @@
 'use strict';
 
-exports.show = (req, res) => {
-  var out = {
-    isAuthenticated: req.isAuthenticated(),
-  };
-  if (req.isAuthenticated()) {
-    out['summary'] = req.user.summary;
-  };
-  res.json(out);
-};
+var models = require('../models');
+var express = require('express');
+var router = module.exports = express.Router();
 
-exports.profile = (req, res) => {
+var middleware = require('../middleware');
+var requireAuth = middleware.Auth.requireAuth;
+
+router.get('/profile', requireAuth, (req, res) => {
   if (req.isAuthenticated()) {
     res.json(req.user.profile);
   } else {
     res.sendStatus(403);
   }
-};
+});
 
-exports.update = (req, res) => {
+router.post('/profile', requireAuth, (req, res) => {
   if (req.isAuthenticated()) {
     co(function *() {
       var fields = _.pick(req.body, [
@@ -34,4 +31,4 @@ exports.update = (req, res) => {
   } else {
     res.sendStatus(403);
   }
-};
+});
