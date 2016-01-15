@@ -11,7 +11,7 @@ module.exports = React.createClass({
       <div
         className='ui dropdown'
         { ...props }
-      >
+        >
         { this.props.children }
       </div>
     );

@@ -27,23 +27,23 @@ module.exports = React.createClass({
       <div id='login-widget'>
         <Button
           onClick={ this.openWidget }
-        >
+          >
           Login
         </Button>
         <Modal
           isActive={ this.state.isOpen }
-        >
+          >
           <LoginForm
             onSubmit={ (refs) => {
               this.props.loginAction(refs.email, refs.password);
               this.closeWidget();
             }}
-          />
+            />
         </Modal>
         <Dimmer
           isActive={ this.state.isOpen }
           onClick={ this.closeWidget }
-        />
+          />
       </div>
     );
   }

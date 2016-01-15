@@ -7,7 +7,7 @@ module.exports = React.createClass({
       <div
         className='ui list'
         { ...props }
-      >
+        >
         { this.props.children }
       </div>
     );

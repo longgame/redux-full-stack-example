@@ -21,7 +21,7 @@ module.exports = React.createClass({
           <Divider />
           <Button
             onClick={ logoutAction }
-          >
+            >
             Logout
           </Button>
         </Menu>

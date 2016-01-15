@@ -7,7 +7,7 @@ module.exports = React.createClass({
       <div
         className='ui menu'
         { ...props }
-      >
+        >
         { this.props.children }
       </div>
     );

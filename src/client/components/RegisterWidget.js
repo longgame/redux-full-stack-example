@@ -28,23 +28,23 @@ module.exports = React.createClass({
         <Button
           className='ui teal button'
           onClick={ this.openWidget }
-        >
+          >
           Register
         </Button>
         <Modal
           isActive={ this.state.isOpen }
-        >
+          >
           <RegisterForm
             onSubmit={ (refs) => {
               this.props.registerAction(refs.email, refs.password);
               this.closeWidget();
             }}
-          />
+            />
         </Modal>
         <Dimmer
           isActive={ this.state.isOpen }
           onClick={ this.closeWidget }
-        />
+          />
       </div>
     );
   }

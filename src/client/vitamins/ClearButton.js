@@ -9,7 +9,7 @@ module.exports = React.createClass({
       <Button
         className='ui clear button'
         { ...props }
-      >
+        >
         { this.props.children || 'Clear' }
       </Button>
     );

@@ -7,7 +7,7 @@ module.exports = React.createClass({
       <div className='ui input'>
         <input 
           { ...props }
-        >
+          >
           { this.props.children }
         </input>
       </div>

@@ -12,7 +12,7 @@ module.exports = React.createClass({
       <Button
         className='ui submit button'
         { ...props }
-      >
+        >
         { this.props.children || 'Submit' }
       </Button>
     );

@@ -8,7 +8,7 @@ module.exports = React.createClass({
       <div
         className='ui form'
         { ...props }
-      >
+        >
         { this.props.children }
       </div>
     );
