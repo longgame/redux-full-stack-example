@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import LoginWidget from './LoginWidget';
-import UserWidget from './UserWidget';
+import UserDropdown from './UserDropdown';
 
 module.exports = React.createClass({
   propTypes: {
@@ -12,7 +12,7 @@ module.exports = React.createClass({
     if (this.props.isAuthenticated === false) {
       return <LoginWidget { ...props } />;
     } else {
-      return <UserWidget { ...props } />;
+      return <UserDropdown { ...props } />;
     }
   }
 });

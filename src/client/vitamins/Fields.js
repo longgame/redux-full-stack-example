@@ -4,7 +4,7 @@ module.exports = React.createClass({
   render: function() {
     const { ...props } = this.props;
     return (
-      <div className='field' { ...props }>
+      <div className='fields' { ...props }>
         { this.props.children }
       </div>
     );
