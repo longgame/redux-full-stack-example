@@ -41,7 +41,7 @@ module.exports = React.createClass({
         <Form>
           <Field>
             <Fields>
-              <Field className='twelve wide field'>
+              <Field className='eight wide field'>
                 <label>Address:</label>
                 <input name='address1' type='text' />
               </Field>
@@ -53,15 +53,15 @@ module.exports = React.createClass({
           </Field>
           <Field>
             <Fields>
-              <Field>
+              <Field className='four wide field'>
                 <label>State:</label>
                 <StateDropdown />
               </Field>
-              <Field>
+              <Field className='four wide field'>
                 <label>Country:</label>
                 <CountryDropdown />
               </Field>
-              <Field>
+              <Field className='four wide field'>
                 <label>Postal Code:</label>
                 <input name='postal_code' type='text' />
               </Field>

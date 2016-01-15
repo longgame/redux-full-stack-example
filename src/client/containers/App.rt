@@ -1,10 +1,6 @@
 <div
   id='app'
-  class='ui grid container'
+  class='ui container'
   rt-scope='this.props.dispatch as dispatch'
 >
-  <div class='eight wide column'>
-  </div>
-  <div class='four wide column'>
-  </div>
 </div>

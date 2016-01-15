@@ -9,14 +9,28 @@ import Item from '../vitamins/Item';
 import Flag from '../vitamins/Flag';
 
 module.exports = React.createClass({
+  propTypes: {
+    country: PropTypes.string
+  },
   render: function() {
     const { logoutAction, ...props } = this.props;
+    var states = iso3166.country(this.props.country || 'us').sub;
+    states = _.sortBy(states, (state) => state.name);
     return (
-      <Dropdown>
-        <Button>State</Button>
+      <Dropdown className='ui search selection dropdown'>
+        <input type='hidden' name='state' />
+        <i className='dropdown icon' />
+        <div className='default text'>Select State</div>
         <Menu>
-          <Item>Item 1</Item>
-          <Item>Item 2</Item>
+          {
+            _.map(states, (state, code) => {
+              return (
+                <Item data-value={ code }>
+                  { state.name }
+                </Item>
+              );
+            })
+          }
         </Menu>
       </Dropdown>
     );
