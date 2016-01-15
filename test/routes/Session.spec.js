@@ -9,7 +9,7 @@ describe('Session', () => {
     expect(JSON.parse(res.text)).to.have.all.keys([
       'isAuthenticated'
     ]);
-    assert.isFalse(yield helpers.session.authenticated());
+    assert.isFalse(yield helpers.session.isAuthenticated());
   });
 
   it('GET /session returns user summary when authenticated', function *() {
@@ -18,7 +18,7 @@ describe('Session', () => {
 
     var res = yield request.get('/session').end();
     expect(res.status).to.equal(200);
-    assert.isTrue(yield helpers.session.authenticated());
+    assert.isTrue(yield helpers.session.isAuthenticated());
     expect(JSON.parse(res.text)).to.have.all.keys([
       'isAuthenticated', 'summary'
     ]);

@@ -1,0 +1,8 @@
+#!/usr/bin/env node --harmony
+
+var app = require('../app');
+var models = require('../src/models');
+
+models.sequelize.sync({ force: true }).then(() => {
+  console.log("SUCCESS: Synced database successfully");
+});

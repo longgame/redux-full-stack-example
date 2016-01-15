@@ -16,7 +16,7 @@ describe('Login', () => {
       "message": "Login succeeded"
     });
 
-    assert.isTrue(yield helpers.session.authenticated());
+    assert.isTrue(yield helpers.session.isAuthenticated());
   });
 
   it ('Throws 400 for missing credentials', function *() {
@@ -27,7 +27,7 @@ describe('Login', () => {
       "message": "Missing credentials"
     });
 
-    assert.isFalse(yield helpers.session.authenticated());
+    assert.isFalse(yield helpers.session.isAuthenticated());
   });
   
   it ('Throws 400 for missing email', function *() {
@@ -41,7 +41,7 @@ describe('Login', () => {
       "message": "Missing credentials"
     });
 
-    assert.isFalse(yield helpers.session.authenticated());
+    assert.isFalse(yield helpers.session.isAuthenticated());
   });
   
   it ('Throws 400 for missing password', function *() {
@@ -55,7 +55,7 @@ describe('Login', () => {
       "message": "Missing credentials"
     });
 
-    assert.isFalse(yield helpers.session.authenticated());
+    assert.isFalse(yield helpers.session.isAuthenticated());
   });
   
   it ('Throws 401 for invalid email', function *() {
@@ -70,7 +70,7 @@ describe('Login', () => {
       "message": "Invalid username or password"
     });
 
-    assert.isFalse(yield helpers.session.authenticated());
+    assert.isFalse(yield helpers.session.isAuthenticated());
   });
   
   it ('Throws 401 for invalid password', function *() {
@@ -85,6 +85,6 @@ describe('Login', () => {
       "message": "Invalid username or password"
     });
 
-    assert.isFalse(yield helpers.session.authenticated());
+    assert.isFalse(yield helpers.session.isAuthenticated());
   });
 });

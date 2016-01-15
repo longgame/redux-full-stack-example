@@ -12,7 +12,7 @@ describe('Register', function() {
       "message": "Registration succeeded"
     });
 
-    assert.isTrue(yield helpers.session.authenticated());
+    assert.isTrue(yield helpers.session.isAuthenticated());
   });
   
   it ('throws 409 for duplicate email', function *() {
@@ -27,7 +27,7 @@ describe('Register', function() {
     });
 
     // FIXME: WTF???
-    //assert.isFalse(yield helpers.session.authenticated());
+    //assert.isFalse(yield helpers.session.isAuthenticated());
   });
 
   it ('Throws 400 for missing credentials', function *() {
@@ -38,7 +38,7 @@ describe('Register', function() {
       "message": "Missing credentials"
     });
 
-    assert.isFalse(yield helpers.session.authenticated());
+    assert.isFalse(yield helpers.session.isAuthenticated());
   });
   
   it ('Throws 400 for missing email', function *() {
@@ -52,7 +52,7 @@ describe('Register', function() {
       "message": "Missing credentials"
     });
 
-    assert.isFalse(yield helpers.session.authenticated());
+    assert.isFalse(yield helpers.session.isAuthenticated());
   });
   
   it ('Throws 400 for missing password', function *() {
@@ -66,6 +66,6 @@ describe('Register', function() {
       "message": "Missing credentials"
     });
 
-    assert.isFalse(yield helpers.session.authenticated());
+    assert.isFalse(yield helpers.session.isAuthenticated());
   });
 });

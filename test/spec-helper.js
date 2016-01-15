@@ -46,7 +46,7 @@ beforeEach(function *() {
 
 afterEach(function *() {
   console.log("--- Finished Unit Test (%s) ---", Date.now()-tsTest);
-  if (yield sessionHelper.authenticated())
+  if (yield sessionHelper.isAuthenticated())
     yield userHelper.logout();
 });
 

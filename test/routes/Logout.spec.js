@@ -9,9 +9,9 @@ describe('Logout', () => {
   });
 
   it('POST /logout deauthenticate', function *() {
-    assert.isTrue(yield helpers.session.authenticated());
+    assert.isTrue(yield helpers.session.isAuthenticated());
     var res = yield request.post('/logout').end();
     expect(res.status).to.equal(200);
-    assert.isFalse(yield helpers.session.authenticated());
+    assert.isFalse(yield helpers.session.isAuthenticated());
   });
 });
